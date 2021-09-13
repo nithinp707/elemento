@@ -6,37 +6,151 @@ version: 2.1
 orbs:
   android: circleci/android@1.0.3
 
+# References are blocks of configurations that we can reference and reuse.
+references:
+
+  # Workspaces represent the spaces we work on & are useful for sharing data between jobs.
+  # Create a workspace with the ~/code directory.
+  workspace: &workspace
+               ~/elemento
+
+  # Docker Image Configs
+  android_config: &android_config
+    working_directory: *workspace
+    docker:
+      - image: circleci/android:api-29
+    environment:
+      JVM_OPTS: -Xmx3200m
+
+  gradle_key: &gradle_key
+                jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+  restore_gradle_cache: &restore_gradle_cache
+    restore_cache:
+      key: *gradle_key
+
+  save_gradle_cache: &save_gradle_cache
+    save_cache:
+      paths:
+        - ~/.gradle
+      key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+  android_dependencies: &android_dependencies
+    run:
+      name: Download Android Dependencies
+      command: ./gradlew androidDependencies
+
+  run-lint-tests: &run-lint-tests
+    run:
+      name: Run Lint Tests
+      command: ./gradlew lint test
+
+  run-unit-tests: &run-unit-tests
+    run:
+      name: Run Unit Test
+      command: ./gradlew testDevDebugUnitTest
+
+  store-artifacts: &store-artifacts
+    store_artifacts:
+      path: app/build/reports
+      destination: reports
+
+  store-test-results: &store-test-results
+    store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+      path: app/build/test-results
+
+  install-fastlane: &install-fastlane
+    run:
+      name: Install fastlane
+      command: bundle update
+
+  install-firebase-plugin: &install-firebase-plugin
+    run:
+      name: Install Firebase Plugin
+      command: fastlane add_plugin firebase_app_distribution
+
+  install-firebase-tools: &install-firebase-tools
+    run:
+      name: Install firebase Tools
+      command: curl -sL firebase.tools | bash
+
+  deploy-firebase-build: &deploy-firebase-build
+    run:
+      name: Deploy build to Firebase App Distribution
+      command: bundle exec fastlane $FASTLANE_LANE
+      no_output_timeout: 60m
+
+  run-sonarqube: &run-sonrqube
+    run:
+      name: SonarQube analysis
+      command: ./gradlew sonarqube -Dsonar.projectKey=GoGrab-Mobile -Dsonar.projectName=GoGrab-Mobile -Dsonar.host.url=https://quality.experionglobal.dev/ -Dsonar.login=b088d64d4bdc6ff39b17bed297a70509e5236d71
+
+
 jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:  
-    # These next lines define the Android machine image executor: https://circleci.com/docs/2.0/executor-types/
-    executor:
-      name: android/android-machine
 
+  ## Run unit tests
+  unit-test-branches:
+    <<: *android_config
     steps:
-      # Checkout the code as the first step.
       - checkout
+      - *restore_gradle_cache
+      - *android_dependencies
+      - *save_gradle_cache
+      #- *run-unit-tests
+      #- *run-lint-tests
+      #- *run-sonrqube
+      #- *store-artifacts
+      #- *store-test-results
 
-      # The next step will run the unit tests
-      - android/run-tests:
-          test-command: ./gradlew lint testDebug --continue
+  deploy-internal:
+    environment:
+      FASTLANE_LANE: internal
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_gradle_cache
+      - *android_dependencies
+      - *save_gradle_cache
+#      - *install-fastlane
+#      - *install-firebase-plugin
+#      - *install-firebase-tools
+#      - *deploy-firebase-build
 
-      # Then start the emulator and run the Instrumentation tests!
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-25;google_apis;x86
-
-      # And finally run the release build
-#      - run:
-#          name: Assemble release build
-#          command: |
-#            ./gradlew assembleRelease
+  deploy-prod:
+    environment:
+      FASTLANE_LANE: prod
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_gradle_cache
+      - *android_dependencies
+      - *save_gradle_cache
+#      - *install-fastlane
+#      - *install-firebase-plugin
+#      - *install-firebase-tools
+      #- *deploy-firebase-build
 
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
   # CircleCI will run this workflow on every commit.
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
-  sample: 
+  version: 2
+  unit-test-for-feature-branches:
     jobs:
-      - build-and-test
+      - unit-test-branches:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+  deploy-build-to-firebase:
+    jobs:
+      - deploy-internal:
+          filters:
+            branches:
+              only: develop
+      - deploy-prod:
+          filters:
+            branches:
+              only: master
