@@ -80,11 +80,6 @@ references:
       command: bundle exec fastlane $FASTLANE_LANE
       no_output_timeout: 60m
 
-  run-sonarqube: &run-sonrqube
-    run:
-      name: SonarQube analysis
-      command: ./gradlew sonarqube -Dsonar.projectKey=GoGrab-Mobile -Dsonar.projectName=GoGrab-Mobile -Dsonar.host.url=https://quality.experionglobal.dev/ -Dsonar.login=b088d64d4bdc6ff39b17bed297a70509e5236d71
-
 
 jobs:
 
