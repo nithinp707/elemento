@@ -80,6 +80,12 @@ references:
       command: bundle exec fastlane $FASTLANE_LANE
       no_output_timeout: 60m
 
+  deploy-beta-build: &deploy-beta-build
+    run:
+      name: Deploy build to Playstore beta channel
+      command: bundle exec fastlane $FASTLANE_LANE
+      no_output_timeout: 60m
+
 
 jobs:
 
@@ -106,7 +112,8 @@ jobs:
       - *restore_gradle_cache
       - *android_dependencies
       - *save_gradle_cache
-#      - *install-fastlane
+      - *install-fastlane
+      - *deploy-beta-build
 #      - *install-firebase-plugin
 #      - *install-firebase-tools
 #      - *deploy-firebase-build
@@ -139,7 +146,7 @@ workflows:
               ignore:
                 - develop
                 - master
-  deploy-build-to-firebase:
+  deploy-build-to-beta:
     jobs:
       - deploy-internal:
           filters:
