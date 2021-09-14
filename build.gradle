@@ -2,7 +2,7 @@
 buildscript {
     ext {
         kotlin_version = "1.5.30"
-        versionCode_prod = 1
+        versionCode_prod = 2
         versionName_prod = "1.0"
         database_version_prod = '1'
     }
