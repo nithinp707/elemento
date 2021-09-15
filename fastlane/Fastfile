@@ -29,7 +29,7 @@ platform :android do
     )
     upload_to_play_store(track: 'alpha',
      skip_upload_apk: true,
-      aab: 'app/release/app-release.aab')
+      aab: 'app/build/outputs/bundle/release/app-release.aab')
     slack(message: 'Successfully distributed a new beta build')
   end
   
