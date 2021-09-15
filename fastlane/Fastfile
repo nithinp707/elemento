@@ -27,7 +27,9 @@ platform :android do
     gradle(task: 'assemble',
      build_type: 'Release'
     )
-    upload_to_play_store(track: 'beta')
+    upload_to_play_store(track: 'alpha',
+     skip_upload_apk: true,
+      aab: 'app/release/app-release.aab')
     slack(message: 'Successfully distributed a new beta build')
   end
   
