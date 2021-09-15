@@ -16,6 +16,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.zenora.elemento"
         minSdk 23
         targetSdk 31
@@ -35,6 +36,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
