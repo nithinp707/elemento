@@ -3,7 +3,6 @@ package com.zenora.elemento
 import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import com.zenora.elemento.common.koincomponents.repositoryModule
 import com.zenora.elemento.common.koincomponents.networkModule
 import com.zenora.elemento.common.koincomponents.repositoryModule
 import com.zenora.elemento.common.koincomponents.viewModelModule

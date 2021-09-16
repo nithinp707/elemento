@@ -20,7 +20,7 @@ class MainActivity : BaseActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val loginResponseData =
+        /*val loginResponseData =
             SharedPreferenceHelper.getLoginResponse(PreferenceConstants.LOGIN_RESPONSE)
         if (loginResponseData == null) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -28,6 +28,6 @@ class MainActivity : BaseActivity() {
         } else if (loginResponseData.accessToken.isNullOrEmpty()) {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
-        }
+        }*/
     }
 }
