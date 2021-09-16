@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_116">116dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="tab_indicator">0.80dp</dimen>
+    <dimen name="dp_75">75dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_19">19dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_17">17dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_54">54dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+
+
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_37">37dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="sp_26">26sp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="sp_25">25sp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_22">22dp</dimen>
+    <dimen name="dp_175">175dp</dimen>
+    <dimen name="dp_68">68dp</dimen>
+    <dimen name="dp_288">288dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_28">28dp</dimen>
+    <dimen name="dp_58">58dp</dimen>
+    <dimen name="dp_44">44dp</dimen>
+
+    <!--Text Dimensions-->
+    <dimen name="toolbar_text_size">16dp</dimen>
+    <dimen name="text_size_xxxxsmall">8dp</dimen>
+    <dimen name="text_size_xxxsmall">10dp</dimen>
+    <dimen name="text_size_xxsmall">11dp</dimen>
+    <dimen name="text_size_xsmall">12dp</dimen>
+    <dimen name="text_size_small">13dp</dimen>
+    <dimen name="text_size_normal">14dp</dimen>
+    <dimen name="text_size_semi_medium">15dp</dimen>
+    <dimen name="text_size_medium">16dp</dimen>
+    <dimen name="text_size_semi_large">18dp</dimen>
+    <dimen name="text_size_large">20dp</dimen>
+    <dimen name="text_size_xlarge">24dp</dimen>
+
+</resources>

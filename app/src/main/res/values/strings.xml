@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Elemento</string>
+    <string name="common_error_message">Something went wrong. Please try again</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="login">Login</string>
+    <string name="invalid_email_message">Invalid email address</string>
+    <string name="version">version</string>
+    <string name="email_empty">Email empty</string>
+    <string name="pass_empty">password empty</string>
+    <string name="no_network">No network available</string>
 </resources>
