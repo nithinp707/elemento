@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.zenora.elemento.R
-import com.zenora.elemento.common.SharedPreferenceHelper
 import com.zenora.elemento.common.baseclass.BaseActivity
-import com.zenora.elemento.common.constants.PreferenceConstants
 import com.zenora.elemento.databinding.ActivityMainBinding
 import com.zenora.elemento.feature.login.ui.LoginActivity
 
@@ -19,6 +17,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
 
         /*val loginResponseData =
             SharedPreferenceHelper.getLoginResponse(PreferenceConstants.LOGIN_RESPONSE)

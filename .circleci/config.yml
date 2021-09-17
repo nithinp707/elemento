@@ -124,11 +124,14 @@ workflows:
   unit-test-for-feature-branches:
     jobs:
       - unit-test-branches:
+          pull_request: true
           filters:
             branches:
               ignore:
                 - develop
                 - master
+
+
   deploy-build-to-beta:
     jobs:
       - deploy-internal:
@@ -139,3 +142,88 @@ workflows:
           filters:
             branches:
               only: master
+
+
+  # Run instrumented tests
+#  test_instrumented:
+#    environment:
+#      TERM: dumb
+#      JVM_OPTS: -Xmx3200m
+#    docker:
+#      - image: circleci/android:api-28
+#      - image: google/cloud-sdk:latest
+#    steps:
+#      - checkout
+#      - *restore_gradle_cache
+#      - *attach_build_workspace
+#      - run:
+#          name: Export Key
+#          command: ./gradlew exportFirebaseTestlabKey
+#      - run:
+#          name: Set Google Cloud project
+#          command: gcloud config set project agnus-2fff8
+#      - run:
+#          name: Authenticate with Google Cloud
+#          command: gcloud auth activate-service-account firebase-testlab@agnus-2fff8.iam.gserviceaccount.com --key-file app/build/firebase-testlab-key.json
+#      - run:
+#          name: Run instrumented test on Firebase Test Lab
+#          #          command: gcloud firebase test android run .firebase/testlab.yml:instrumented-tests --results-bucket=gs://firebase-testlab-bucket --results-dir=${CIRCLE_WORKFLOW_JOB_ID}
+#          command: gcloud firebase test android run .firebase/testlab.yml:instrumented-tests
+#      - run:
+#          name: Download instrumented test results
+#          command: mkdir build/firebase
+#          command: gsutil -m cp -r -U "`gsutil ls gs://firebase-testlab-bucket/${CIRCLE_WORKFLOW_JOB_ID}`*" build/firebase
+#      - store_test_results
+#          path: ...
+#      - store_artifacts:
+#          path: build/firebase
+#          destination: firebase
+#commit:
+#  jobs:
+#    - dependencies:
+#        filters:
+#          branches:
+#            ignore:
+#              - master
+#    - build_debug:
+#        requires:
+#          - dependencies
+#        filters:
+#          branches:
+#            ignore:
+#              - master
+#    - test_unit_debug:
+#        requires:
+#          - build_debug
+#        filters:
+#          branches:
+#            ignore:
+#              - master
+#  deploy:
+#    jobs:
+#      - dependencies:
+#          filters:
+#            branches:
+#              only:
+#                - master
+#      - build_release:
+#          requires:
+#            - dependencies
+#          filters:
+#            branches:
+#              only:
+#                - master
+#      - test_unit_release:
+#          requires:
+#            - build_release
+#          filters:
+#            branches:
+#              only:
+#                - master
+#      - deploy:
+#          requires:
+#            - test_unit_release
+#          filters:
+#            branches:
+#              only:
+#                - master
