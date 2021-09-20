@@ -27,7 +27,7 @@ platform :android do
     gradle(task: 'bundle',
      build_type: 'Release'
     )
-    upload_to_play_store(track: 'internal',
+    upload_to_play_store(track: 'PreAlpha',
      skip_upload_apk: true,
       aab: 'app/build/outputs/bundle/release/app-release.aab')
   end

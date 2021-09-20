@@ -21,8 +21,8 @@ android {
         applicationId "com.zenora.elemento"
         minSdk 23
         targetSdk 31
-        versionCode 7
-        versionName "1.4"
+        versionCode 8
+        versionName "1.5"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
