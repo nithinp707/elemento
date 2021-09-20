@@ -25,13 +25,7 @@ platform :android do
   lane :beta do
     gradle(task: 'clean')
     gradle(task: 'bundle',
-     build_type: 'Release',
-     properties: {
-         "android.injected.signing.store.file" => "storeFile",
-         "android.injected.signing.store.password" => "storePassword",
-         "android.injected.signing.key.alias" => "keyAlias",
-         "android.injected.signing.key.password" => "keyPassword",
-       }
+     build_type: 'Release'
     )
     upload_to_play_store(track: 'internal',
      skip_upload_apk: true,
