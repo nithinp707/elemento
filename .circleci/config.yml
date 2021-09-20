@@ -97,6 +97,7 @@ jobs:
       - *save_gradle_cache
       - *install-fastlane
       - *deploy-beta-build
+      - *store-artifacts
 
   deploy-prod:
     environment:
