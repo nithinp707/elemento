@@ -58,25 +58,6 @@ android {
         viewBinding true
         dataBinding true
     }
-    flavorDimensions "default"
-    productFlavors {
-        dev {
-            versionName "DEV 1.0"
-            versionCode 1
-        }
-        qc {
-            versionName "QC 1.0"
-            versionCode 1
-        }
-        uat {
-            versionName "UAT 1.0"
-            versionCode 1
-        }
-        prod {
-            versionName rootProject.ext.versionName_prod
-            versionCode rootProject.ext.versionCode_prod
-        }
-    }
 }
 
 apollo {
