@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "666393413805",
+    "project_id": "elemento-1d20b",
+    "storage_bucket": "elemento-1d20b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666393413805:android:a4c46c5a79ca5ef1d29e24",
+        "android_client_info": {
+          "package_name": "com.zenora.elemento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666393413805-uf7l40jd82tuv2ungr8fbbdnb2qm8oc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbQBDBXoYVrWjU7zGtmCNKsmRqAC8XOq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666393413805-uf7l40jd82tuv2ungr8fbbdnb2qm8oc9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
