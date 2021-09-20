@@ -28,6 +28,7 @@ platform :android do
      build_type: 'Release'
     )
     upload_to_play_store(track: 'PreAlpha',
+    json_key_data:$KEY_PLAY_STORE_UPLOAD_ELEMENTO
      skip_upload_apk: true,
       aab: 'app/build/outputs/bundle/release/app-release.aab')
   end
