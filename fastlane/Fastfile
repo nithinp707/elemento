@@ -27,7 +27,7 @@ platform :android do
     gradle(task: 'bundle',
      build_type: 'Release',
      properties: {
-         "android.injected.signing.store.file" => "elemento_signed_key.jks",
+         "android.injected.signing.store.file" => "storeFile",
          "android.injected.signing.store.password" => "storePassword",
          "android.injected.signing.key.alias" => "keyAlias",
          "android.injected.signing.key.password" => "keyPassword",
