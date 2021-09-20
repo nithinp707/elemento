@@ -70,6 +70,10 @@ references:
       command: bundle exec fastlane beta
       no_output_timeout: 60m
 
+  get-signing-json: &get-signing-json
+    run:
+      name: Create playstore signing key
+      command: echo "$KEY_PLAY_STORE_UPLOAD_ELEMENTO" | base64 --decode > playstore.json
 
 jobs:
 
@@ -94,6 +98,7 @@ jobs:
       - checkout
       - *restore_gradle_cache
       - *android_dependencies
+      - *get-signing-json
       - *save_gradle_cache
       - *install-fastlane
       - *deploy-beta-build
