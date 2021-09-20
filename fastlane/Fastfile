@@ -21,13 +21,13 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Playstore Beta"
+  desc "Submit a new Internal Build to Playstore Beta"
   lane :beta do
     gradle(task: 'clean')
     gradle(task: 'bundle',
      build_type: 'Release'
     )
-    upload_to_play_store(track: 'alpha',
+    upload_to_play_store(track: 'internal',
      skip_upload_apk: true,
       aab: 'app/build/outputs/bundle/release/app-release.aab')
   end
