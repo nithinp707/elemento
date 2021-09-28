@@ -73,7 +73,7 @@ references:
   get-signing-json: &get-signing-json
     run:
       name: Create playstore signing key
-      command: echo ENV['KEY_PLAY_STORE_UPLOAD_ELEMENTO'] | base64 --decode > playstore.json
+      command: echo ENV['KEY_PLAY_STORE_UPLOAD_ELEMENTO']
 
 jobs:
 
