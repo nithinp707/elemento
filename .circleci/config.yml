@@ -67,13 +67,13 @@ references:
   deploy-beta-build: &deploy-beta-build
     run:
       name: Deploy build to Playstore beta channel
-      command: bundle exec fastlane test
+      command: bundle exec fastlane beta
       no_output_timeout: 60m
 
   get-signing-json: &get-signing-json
     run:
       name: Create playstore signing key
-      command: echo "$KEY_PLAY_STORE_UPLOAD_ELEMENTO" | base64 --decode > playstore.json
+      command: echo ENV['KEY_PLAY_STORE_UPLOAD_ELEMENTO'] | base64 --decode > playstore.json
 
 jobs:
 
@@ -101,7 +101,7 @@ jobs:
       - *get-signing-json
       - *save_gradle_cache
       - *install-fastlane
-      - *deploy-beta-build
+      #- *deploy-beta-build
       - *store-artifacts
 
   deploy-prod:
