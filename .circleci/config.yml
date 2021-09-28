@@ -101,7 +101,7 @@ jobs:
       - *get-signing-json
       - *save_gradle_cache
       - *install-fastlane
-      #- *deploy-beta-build
+      - *deploy-beta-build
       - *store-artifacts
 
   deploy-prod:
