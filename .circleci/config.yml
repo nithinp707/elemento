@@ -67,7 +67,7 @@ references:
   deploy-beta-build: &deploy-beta-build
     run:
       name: Deploy build to Playstore beta channel
-      command: bundle exec fastlane beta
+      command: bundle exec fastlane test
       no_output_timeout: 60m
 
   get-signing-json: &get-signing-json
