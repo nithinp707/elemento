@@ -73,7 +73,7 @@ references:
   get-signing-json: &get-signing-json
     run:
       name: Create playstore signing key
-      command: echo ENV['TEST_VARIABLE']
+      command: echo ${TEST_VARIABLE}
 
 jobs:
 
