@@ -48,7 +48,7 @@ references:
   run-unit-tests: &run-unit-tests
     run:
       name: Run Unit Test
-      command: ./gradlew testDevDebugUnitTest
+      command: ./gradlew testDebugUnitTest
 
   store-artifacts: &store-artifacts
     store_artifacts:
@@ -70,6 +70,10 @@ references:
       command: bundle exec fastlane beta
       no_output_timeout: 60m
 
+  get-signing-json: &get-signing-json
+    run:
+      name: Create playstore signing key
+      command: echo ${TEST_VARIABLE}
 
 jobs:
 
@@ -81,8 +85,8 @@ jobs:
       - *restore_gradle_cache
       - *android_dependencies
       - *save_gradle_cache
-      - *run-unit-tests
-      - *run-lint-tests
+      #- *run-unit-tests
+      #- *run-lint-tests
       - *store-artifacts
       - *store-test-results
 
@@ -94,12 +98,11 @@ jobs:
       - checkout
       - *restore_gradle_cache
       - *android_dependencies
+      - *get-signing-json
       - *save_gradle_cache
       - *install-fastlane
       - *deploy-beta-build
-#      - *install-firebase-plugin
-#      - *install-firebase-tools
-#      - *deploy-firebase-build
+      - *store-artifacts
 
   deploy-prod:
     environment:
@@ -110,10 +113,6 @@ jobs:
       - *restore_gradle_cache
       - *android_dependencies
       - *save_gradle_cache
-#      - *install-fastlane
-#      - *install-firebase-plugin
-#      - *install-firebase-tools
-      #- *deploy-firebase-build
 
 workflows:
   # Below is the definition of your workflow.

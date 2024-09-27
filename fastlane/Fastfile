@@ -13,7 +13,7 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:android)
+#default_platform(:android)
 
 platform :android do
   desc "Runs all the tests"
@@ -27,7 +27,8 @@ platform :android do
     gradle(task: 'bundle',
      build_type: 'Release'
     )
-    upload_to_play_store(track: 'internal',
+    upload_to_play_store(track: 'PreAlpha',
+    json_key_data:ENV['KEY_PLAY_STORE_UPLOAD_ELEMENTO'],
      skip_upload_apk: true,
       aab: 'app/build/outputs/bundle/release/app-release.aab')
   end

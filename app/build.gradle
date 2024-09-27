@@ -21,8 +21,8 @@ android {
         applicationId "com.zenora.elemento"
         minSdk 23
         targetSdk 31
-        versionCode 7
-        versionName "1.4"
+        versionCode 8
+        versionName "1.5"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,6 +43,7 @@ android {
         release {
             minifyEnabled true
             useProguard true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
         }
@@ -57,25 +58,6 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
-    }
-    flavorDimensions "default"
-    productFlavors {
-        dev {
-            versionName "DEV 1.0"
-            versionCode 1
-        }
-        qc {
-            versionName "QC 1.0"
-            versionCode 1
-        }
-        uat {
-            versionName "UAT 1.0"
-            versionCode 1
-        }
-        prod {
-            versionName rootProject.ext.versionName_prod
-            versionCode rootProject.ext.versionCode_prod
-        }
     }
 }
 
