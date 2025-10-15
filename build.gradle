@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = "1.5.30"
+        kotlin_version = "1.9.25"
         versionCode_prod = 2
         versionName_prod = "1.0"
         database_version_prod = '1'
@@ -12,28 +12,24 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "com.android.tools.build:gradle:8.13.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // Google services
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.gms:google-services:4.4.4'
         // Firebase crashlytics
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.6'
         // Firebase performance monitor
-        classpath 'com.google.firebase:perf-plugin:1.4.0'
+        classpath 'com.google.firebase:perf-plugin:2.0.1'
         // Jetpack navigation component
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
-        // Sonarqube
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.9.5"
         // Jetpack navigation component
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.9.5"
         // Hilt-dependency injection
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.37"
-        // GraphQL
-        classpath "com.apollographql.apollo:apollo-gradle-plugin:2.5.9"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.57.2"
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register("clean", Delete) {
+    delete(rootProject.layout.buildDirectory)
 }
