@@ -4,13 +4,12 @@ import android.content.Intent
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.zenora.elemento.BaseApplication
-import com.zenora.elemento.BuildConfig
 import com.zenora.elemento.common.SharedPreferenceHelper
 import com.zenora.elemento.common.constants.AppConstants
 import com.zenora.elemento.common.constants.PreferenceConstants
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.BuildConfig
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import retrofit2.Retrofit
@@ -34,7 +33,6 @@ object AppAPIClient : KoinComponent {
     fun retrofitBuilder(okHttpClient: OkHttpClient, url: String): Retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .baseUrl(url)
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(LiveDataCallAdapterFactory())
         .build()

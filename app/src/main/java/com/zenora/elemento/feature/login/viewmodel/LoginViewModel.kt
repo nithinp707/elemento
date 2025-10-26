@@ -2,9 +2,9 @@ package com.zenora.elemento.feature.login.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.zenora.elemento.BaseApplication
 import com.zenora.elemento.R
+import androidx.lifecycle.switchMap
 import com.zenora.elemento.common.SharedPreferenceHelper
 import com.zenora.elemento.common.baseclass.APIResponse
 import com.zenora.elemento.common.baseclass.ObservableViewModel
@@ -28,19 +28,16 @@ class LoginViewModel(private var loginRepository: LoginRepository) : ObservableV
 
     private fun getRepositoryItem(): LiveData<APIResponse<LoginResponse>> {
         val mediatorLiveData = MutableLiveData<APIResponse<LoginResponse>>()
-        return Transformations.switchMap(loginRepository.userLoginRepo(userEmail, password)) {
+        return loginRepository.userLoginRepo(userEmail, password).switchMap {
             if (it is APIResponse.Success) {
                 SharedPreferenceHelper.saveString(
-                    PreferenceConstants.ACCESS_TOKEN,
-                    it.data.accessToken
+                    PreferenceConstants.ACCESS_TOKEN, it.data.accessToken
                 )
                 SharedPreferenceHelper.saveString(
-                    PreferenceConstants.REFRESH_TOKEN,
-                    it.data.refreshToken
+                    PreferenceConstants.REFRESH_TOKEN, it.data.refreshToken
                 )
                 SharedPreferenceHelper.saveLoginResponse(
-                    PreferenceConstants.LOGIN_RESPONSE,
-                    Gson().toJson(it.data)
+                    PreferenceConstants.LOGIN_RESPONSE, Gson().toJson(it.data)
                 )
             }
             mediatorLiveData.value = it

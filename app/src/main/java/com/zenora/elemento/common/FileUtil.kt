@@ -697,7 +697,7 @@ class FileUtil(private val context: Context) {
                 FileInputStream(file),
                 null, null
             )
-            val correctBmp: Bitmap
+            var correctBmp: Bitmap
             if (bmp != null) {
                 correctBmp = Bitmap.createBitmap(
                     bmp, 0, 0, bmp.width,

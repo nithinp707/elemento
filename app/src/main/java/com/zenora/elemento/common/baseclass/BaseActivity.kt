@@ -63,7 +63,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun showSnackBarAlert(message: String?) {
+    /*fun showSnackBarAlert(message: String?) {
         val messageText = message ?: resources.getString(R.string.common_error_message)
         val snackBar = Snackbar.make(
             window.decorView.findViewById(android.R.id.content),
@@ -74,7 +74,7 @@ open class BaseActivity : AppCompatActivity() {
         val textView = snackBarView.findViewById(R.id.snackbar_text) as TextView
         textView.maxLines = 5
         snackBar.show()
-    }
+    }*/
 
     fun showLongToast(message: String?) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()

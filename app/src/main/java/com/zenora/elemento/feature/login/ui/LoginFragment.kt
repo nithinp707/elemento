@@ -129,7 +129,7 @@ class LoginFragment : BaseFragment() {
             }
             is APIResponse.Error -> {
                 dismissProgress()
-                showSnackBarAlert(response.message)
+                //showSnackBarAlert(response.message)
             }
         }
     }
@@ -156,6 +156,7 @@ class LoginFragment : BaseFragment() {
     private fun fcmUpdateResponse(response: APIResponse<Boolean>?) {
         when (response) {
             is APIResponse.Loading -> {
+                //do nothing
             }
             is APIResponse.Success -> {
                 dismissProgress()
@@ -164,7 +165,11 @@ class LoginFragment : BaseFragment() {
             }
             is APIResponse.Error -> {
                 dismissProgress()
-                showSnackBarAlert(response.message)
+                //showSnackBarAlert(response.message)
+            }
+
+            else -> {
+                //do nothing
             }
         }
     }

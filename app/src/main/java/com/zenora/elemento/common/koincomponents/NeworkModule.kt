@@ -2,7 +2,6 @@ package com.zenora.elemento.common.koincomponents
 
 import com.zenora.elemento.common.network.AppAPIClient.createWebService
 import com.zenora.elemento.common.network.AppAPIClient.getUserOkhttpClientWithHeader
-import com.zenora.elemento.BuildConfig
 import com.zenora.elemento.common.network.*
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

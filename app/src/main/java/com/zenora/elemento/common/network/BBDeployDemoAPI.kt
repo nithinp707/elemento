@@ -1,7 +1,8 @@
 package com.zenora.elemento.common.network
 
 import android.os.Looper
-import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.okHttpClient
 import okhttp3.OkHttpClient
 
 class BBDeployDemoAPI {

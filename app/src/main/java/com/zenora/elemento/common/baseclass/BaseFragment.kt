@@ -72,7 +72,7 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun showSnackBarAlert(message: String?) {
+/*    fun showSnackBarAlert(message: String?) {
         activity?.window?.decorView?.let {
             val messageText = message ?: resources.getString(R.string.common_error_message)
             val snackBar = Snackbar.make(
@@ -86,7 +86,7 @@ open class BaseFragment : Fragment() {
             snackBar.show()
         }
 
-    }
+    }*/
 
     fun showLongToast(message: String?) {
         activity.let {

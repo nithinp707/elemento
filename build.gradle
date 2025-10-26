@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = "1.9.25"
+        kotlin_version = "2.2.20"
         versionCode_prod = 2
         versionName_prod = "1.0"
         database_version_prod = '1'
@@ -32,4 +32,10 @@ buildscript {
 
 tasks.register("clean", Delete) {
     delete(rootProject.layout.buildDirectory)
+}
+
+tasks.register("testClasses") {
+    doLast {
+        println("Stub for testClasses – Android projects don’t use this task.")
+    }
 }

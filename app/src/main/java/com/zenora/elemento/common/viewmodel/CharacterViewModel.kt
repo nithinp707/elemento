@@ -28,7 +28,7 @@ class CharacterViewModel @Inject constructor(
     val charactersList: LiveData<ViewState<Response<CharactersListQuery.Data>>>
         get() = _charactersList
 
-    fun queryCharacterList() = viewModelScope.launch {
+    /*fun queryCharacterList() = viewModelScope.launch {
         _charactersList.postValue(ViewState.Loading())
         try {
             val response = repository.queryCharactersList()
@@ -37,5 +37,5 @@ class CharacterViewModel @Inject constructor(
             Log.d("ApolloException", "Failure", e)
             _charactersList.postValue(ViewState.Error("Error Fetching"))
         }
-    }
+    }*/
 }
